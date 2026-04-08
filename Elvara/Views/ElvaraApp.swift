@@ -11,6 +11,7 @@ import Firebase
 @main
 struct ElvaraApp: App {
     @StateObject var authVM = AuthViewModel.shared
+    @StateObject var themeManager = ThemeManager.shared
     
     init() {
         FirebaseApp.configure()
@@ -28,6 +29,7 @@ struct ElvaraApp: App {
             .onAppear {
                 authVM.checkSession()
             }
+            .environment(\.theme, themeManager.currentTheme)
         }
     }
 }
