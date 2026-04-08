@@ -27,7 +27,14 @@ class AuthService {
     }
     
     func getCurrentUser() -> User? {
-        let firebaseUser = Auth.auth().currentUser
-        return User(id: firebaseUser?.uid ?? "id", email: firebaseUser?.email ?? "")
+        guard let firebaseUser = Auth.auth().currentUser else {
+            return nil
+        }
+        return User(id: firebaseUser.uid, email: firebaseUser.email ?? "")
+    }
+    
+    // Check if Firebase session exists
+    func hasActiveSession() -> Bool {
+        return Auth.auth().currentUser != nil
     }
 }
