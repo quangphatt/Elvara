@@ -7,6 +7,7 @@
 
 import Foundation
 
-struct User {
-    var id: UUID
+struct User: Identifiable, Codable {
+    var id: String
+    var email: String
 }
