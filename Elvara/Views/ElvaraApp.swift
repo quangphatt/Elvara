@@ -10,7 +10,6 @@ import Firebase
 
 @main
 struct ElvaraApp: App {
-    @StateObject var authVM = AuthViewModel.shared
     @StateObject var themeManager = ThemeManager.shared
     
     init() {
@@ -19,17 +18,8 @@ struct ElvaraApp: App {
     
     var body: some Scene {
         WindowGroup {
-            Group {
-                if authVM.isLoggedIn {
-                    HomeView()
-                } else {
-                    LoginView()
-                }
-            }
-            .onAppear {
-                authVM.checkSession()
-            }
-            .environment(\.theme, themeManager.currentTheme)
+            SplashScreenView()
+                .environment(\.theme, themeManager.currentTheme)
         }
     }
 }
