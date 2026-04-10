@@ -19,7 +19,9 @@ struct SplashScreenView: View {
                 if authVM.isLoggedIn {
                     HomeView()
                 } else {
-                    LoginView()
+                    NavigationStack {
+                        LoginView()
+                    }
                 }
             }
         } else {

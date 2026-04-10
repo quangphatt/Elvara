@@ -175,11 +175,11 @@ struct LoginView: View {
                         Text("Don't have an account?")
                             .foregroundColor(.secondary)
                         
-                        Button("Sign Up") {
-                            // Navigate to register
+                        NavigationLink(destination: RegisterView()) {
+                            Text("Sign Up")
+                                .fontWeight(.semibold)
+                                .foregroundColor(theme.primary)
                         }
-                        .fontWeight(.semibold)
-                        .foregroundColor(theme.primary)
                     }
                     .font(.subheadline)
                     .padding(.bottom, 32)
