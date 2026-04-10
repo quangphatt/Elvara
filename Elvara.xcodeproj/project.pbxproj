@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B85E221F2F8614C400BB246E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B85E221E2F8614C400BB246E /* FirebaseAnalytics */; };
+		B85E22212F8614C400BB246E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B85E22202F8614C400BB246E /* FirebaseAuth */; };
+		B85E22232F8614C400BB246E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B85E22222F8614C400BB246E /* FirebaseFirestore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		B85E21F62F86095300BB246E /* Elvara.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Elvara.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +29,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B85E221F2F8614C400BB246E /* FirebaseAnalytics in Frameworks */,
+				B85E22212F8614C400BB246E /* FirebaseAuth in Frameworks */,
+				B85E22232F8614C400BB246E /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +74,9 @@
 			);
 			name = Elvara;
 			packageProductDependencies = (
+				B85E221E2F8614C400BB246E /* FirebaseAnalytics */,
+				B85E22202F8614C400BB246E /* FirebaseAuth */,
+				B85E22222F8614C400BB246E /* FirebaseFirestore */,
 			);
 			productName = Elvara;
 			productReference = B85E21F62F86095300BB246E /* Elvara.app */;
@@ -94,6 +106,9 @@
 			);
 			mainGroup = B85E21ED2F86095300BB246E;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B85E221D2F8614C400BB246E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B85E21F72F86095300BB246E /* Products */;
 			projectDirPath = "";
@@ -332,6 +347,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B85E221D2F8614C400BB246E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B85E221E2F8614C400BB246E /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B85E221D2F8614C400BB246E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		B85E22202F8614C400BB246E /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B85E221D2F8614C400BB246E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		B85E22222F8614C400BB246E /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B85E221D2F8614C400BB246E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B85E21EE2F86095300BB246E /* Project object */;
 }
