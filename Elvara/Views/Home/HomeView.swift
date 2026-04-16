@@ -14,7 +14,7 @@ struct HomeView: View {
                 Text("Dashboard")
             }
             Tab("Transaction", systemImage: "arrow.left.arrow.right.circle.fill") {
-                Text("Transaction")
+                TransactionView()
             }
             Tab("Wallet", systemImage: "wallet.pass.fill") {
                 WalletView()
