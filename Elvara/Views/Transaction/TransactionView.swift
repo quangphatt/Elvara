@@ -49,8 +49,8 @@ struct TransactionView: View {
                 TransactionFormView(mode: .edit(tx), vm: vm)
             }
             .alert("Delete transaction?",
-                   isPresented: $isShowingDeleteAlert,
-                   actions: {
+                isPresented: $isShowingDeleteAlert,
+                actions: {
                     Button("Cancel", role: .cancel) {
                         transactionToDelete = nil
                     }
@@ -61,10 +61,11 @@ struct TransactionView: View {
                             transactionToDelete = nil
                         }
                     }
-                   },
-                   message: {
+                },
+                message: {
                     Text("This action cannot be undone.")
-                   })
+                }
+            )
         }
     }
     // MARK: - Top UI

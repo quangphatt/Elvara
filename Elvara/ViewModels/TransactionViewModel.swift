@@ -87,7 +87,7 @@ class TransactionViewModel: ObservableObject {
     }
 
     func createTransaction(_ transaction: Transaction) async {
-        guard currentUserId != nil else { return }
+        guard let userId = currentUserId else { return }
         errorMessage = nil
 
         do {
@@ -96,6 +96,7 @@ class TransactionViewModel: ObservableObject {
             newTx.id = newId
             transactions.insert(newTx, at: 0)
             rebuildSections()
+            wallets = await walletManager.getWallets(for: userId)
         } catch {
             errorMessage = "Failed to create transaction: \(error.localizedDescription)"
             print(errorMessage ?? "")
@@ -103,6 +104,7 @@ class TransactionViewModel: ObservableObject {
     }
 
     func updateTransaction(_ transaction: Transaction) async {
+        guard let userId = currentUserId else { return }
         errorMessage = nil
         do {
             try await manager.updateTransaction(transaction)
@@ -110,6 +112,7 @@ class TransactionViewModel: ObservableObject {
                 transactions[idx] = transaction
             }
             rebuildSections()
+            wallets = await walletManager.getWallets(for: userId)
         } catch {
             errorMessage = "Failed to update transaction: \(error.localizedDescription)"
             print(errorMessage ?? "")
@@ -118,12 +121,14 @@ class TransactionViewModel: ObservableObject {
 
     func deleteTransaction(_ transaction: Transaction) async {
         guard let id = transaction.id else { return }
+        guard let userId = currentUserId else { return }
         errorMessage = nil
 
         do {
             try await manager.deleteTransaction(id: id)
             transactions.removeAll { $0.id == id }
             rebuildSections()
+            wallets = await walletManager.getWallets(for: userId)
         } catch {
             errorMessage = "Failed to delete transaction: \(error.localizedDescription)"
             print(errorMessage ?? "")
