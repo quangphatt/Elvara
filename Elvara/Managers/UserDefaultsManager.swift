@@ -45,3 +45,27 @@ class UserDefaultsManager {
         return defaults.data(forKey: userKey) != nil
     }
 }
+
+extension UserDefaultsManager {
+    private func customCategoriesKey(userId: String) -> String {
+        return "custom_categories_\(userId)"
+    }
+    
+    func saveCustomCategories(_ categories: [Category], userId: String) {
+        if let encoded = try? JSONEncoder().encode(categories) {
+            defaults.set(encoded, forKey: customCategoriesKey(userId: userId))
+        }
+    }
+    
+    func getCachedCustomCategories(userId: String) -> [Category]? {
+        guard let data = defaults.data(forKey: customCategoriesKey(userId: userId)),
+              let categories = try? JSONDecoder().decode([Category].self, from: data) else {
+            return nil
+        }
+        return categories
+    }
+    
+    func clearCustomCategories(userId: String) {
+        defaults.removeObject(forKey: customCategoriesKey(userId: userId))
+    }
+}
